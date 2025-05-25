@@ -1,0 +1,19 @@
+.sla-monitor-page {
+  padding: 1rem;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sla-monitor__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sla-monitor__status-bar {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}

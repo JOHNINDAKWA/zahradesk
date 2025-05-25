@@ -1,0 +1,73 @@
+.ticket-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.ticket-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border-light);
+  background-color: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ticket-actions-bar button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border-light);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ticket-actions-bar button:hover {
+  background-color: var(--color-primary-hover);
+  color: #fff;
+  border-color: var(--color-primary-hover);
+}
+
+.ticket-actions-bar button svg {
+  font-size: 16px;
+}
+
+/* Divider for spacing before export */
+.action-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-border-light);
+  margin: 0 10px;
+}
+
+.export-btn {
+  margin-left: auto;
+  color: var(--color-primary);
+  border: none;
+  background: transparent;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.export-btn:hover {
+  color: var(--color-primary-hover);
+}

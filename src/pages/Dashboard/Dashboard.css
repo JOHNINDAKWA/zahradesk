@@ -1,0 +1,35 @@
+.dashboard-bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  min-width: 350px;
+}
+
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+.ticket-chart-card {
+  background-color: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+
+.dashboard-bottom-row {
+  align-items: stretch;
+}
+

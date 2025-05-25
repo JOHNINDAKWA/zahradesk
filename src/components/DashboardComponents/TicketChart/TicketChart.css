@@ -1,0 +1,57 @@
+
+.ticket-chart-card {
+  background-color: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.ticket-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.custom-dropdown {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: var(--color-surface);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  display: none;
+  min-width: 120px;
+  z-index: 100;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  background-color: var(--color-primary);
+  color: white;
+}

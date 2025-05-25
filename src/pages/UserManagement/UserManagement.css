@@ -1,0 +1,27 @@
+.user-management-page {
+  padding: 2rem;
+  height: 100vh;
+  background: var(--color-bg);
+  box-sizing: border-box;
+}
+
+
+.user-management-grid {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 1.5rem;
+  height: calc(100vh - 4rem); /* Adjust based on your header or padding */
+  overflow: hidden; /* Prevent parent scroll */
+}
+
+
+.user-details-placeholder {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  color: var(--color-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

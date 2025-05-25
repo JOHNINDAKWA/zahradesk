@@ -1,0 +1,45 @@
+.my-tickets-container {
+  padding: var(--space-sm);
+  height: calc(100vh - var(--space-md) - 1.5rem); /* full height minus title & padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+/* Grid Layout */
+.ticket-page-layout {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+  flex-grow: 1;
+  min-height: 0; /* important for scroll */
+  overflow: hidden;
+}
+
+.ticket-list-panel {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 0.5rem; /* space for scrollbar */
+}
+
+.ticket-filter-panel {
+  overflow: visible; /* non-scrollable */
+}
+
+/* Responsive fallback */
+@media (max-width: 900px) {
+  .ticket-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-filter-panel {
+    order: -1;
+  }
+}

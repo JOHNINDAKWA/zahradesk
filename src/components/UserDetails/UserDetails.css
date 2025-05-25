@@ -1,0 +1,241 @@
+/* .user-detail {
+  width: 100%;
+  min-width: 420px;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border-light);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+} */
+
+.user-detail {
+  width: 100%;
+  min-width: 420px;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto; 
+}
+
+
+.user-detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.user-detail__header h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.icon-btn {
+  font-size: 1rem;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.user-detail__avatar {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-detail__avatar img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-detail__avatar h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.user-detail__status {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.user-detail__status.active {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.user-detail__status.inactive {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.user-detail__info p {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: var(--color-muted);
+}
+
+.user-detail__section {
+  margin-top: 1.5rem;
+}
+
+.user-detail__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-muted);
+}
+
+.user-detail__select {
+  font-size: 0.85rem;
+}
+
+.badge-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background-color: var(--color-border-light);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: var(--color-text);
+}
+
+.perm-list {
+  margin-top: 0.5rem;
+  padding-left: 0.4rem;
+}
+
+.perm-list li {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: var(--color-light);
+  font-style: italic;
+}
+
+.user-detail__edit-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.user-detail__extras {
+  margin-top: 2rem;
+  border-top: 1px solid var(--color-border-light);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+/* New additions for editable text fields */
+.user-detail__input-group {
+  margin-bottom: 1rem;
+}
+
+.user-detail__input-group label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-muted);
+}
+
+.user-detail__input-group input {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+.u-t {
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.u-t p {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  margin: 0;
+}
+.u-t p:nth-child(odd) {
+  background-color: var(--color-row-odd);
+}
+
+.u-t p:nth-child(even) {
+  background-color: var(--color-row-even);
+}
+
+
+.u-t strong {
+  font-weight: 600;
+}
+
+
+/* Responsive tweak */
+@media (max-width: 480px) {
+  .user-detail {
+    width: 100%;
+    min-width: unset;
+    padding: 1rem;
+  }
+}

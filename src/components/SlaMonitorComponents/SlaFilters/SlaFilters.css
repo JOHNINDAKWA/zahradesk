@@ -1,0 +1,11 @@
+.sla-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.sla-filter {
+  min-width: 200px;
+  flex: 1;
+}

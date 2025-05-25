@@ -1,0 +1,92 @@
+.sla-rule-table {
+  margin-top: var(--space-sm);
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.sla-rule-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Table Head */
+.sla-rule-table__th,
+.sla-rule-table__td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: middle;
+}
+
+.sla-rule-table__th {
+  background-color: var(--color-row-odd);
+  color: var(--color-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.4px;
+}
+
+/* Alternating Row Colors */
+.sla-rule-table__row:nth-child(odd) {
+  background-color: var(--color-row-odd);
+}
+.sla-rule-table__row:nth-child(even) {
+  background-color: var(--color-row-even);
+}
+
+/* Row Hover */
+.sla-rule-table__row:hover {
+  background-color: rgba(70, 128, 254, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+/* Status Badges */
+.sla-rule-table__badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.sla-rule-table__badge--active {
+  background-color: #e6f9ec;
+  color: #198754;
+  border: 1px solid #b6eac9;
+}
+
+.sla-rule-table__badge--paused {
+  background-color: #fff4e5;
+  color: #d58f1f;
+  border: 1px solid #ffd699;
+}
+
+/* Action Button */
+.sla-rule-table__button {
+  padding: 0.35rem 0.8rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sla-rule-table__button:hover {
+  background-color: var(--color-row-odd);
+  color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}

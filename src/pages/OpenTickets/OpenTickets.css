@@ -1,0 +1,32 @@
+.open-tickets-container {
+  padding: var(--space-sm);
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.ticket-page-layout {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.ticket-list-panel,
+.ticket-filter-panel {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .ticket-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-filter-panel {
+    order: -1;
+  }
+}

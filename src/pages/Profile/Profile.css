@@ -1,0 +1,215 @@
+.profile-page {
+  display: flex;
+  position: relative;
+  height: 100vh; /* full height of the viewport */
+  overflow: hidden;
+
+}
+
+.profile-page__sidebar {
+  width: 280px;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 0px); /* adjust if there's a fixed header */
+  overflow-y: auto;
+  background: var(--color-surface);
+  padding: 1.5rem 1rem;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.profile-page__menu li a{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-light);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-page__menu li:hover,
+.profile-page__menu li.active {
+  background-color: rgba(224, 224, 224, 0.619);
+  color: var(--color-text);
+}
+
+.profile-page__section-label {
+  margin: 1rem 1rem 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.profile-page__main {
+  flex: 1;
+  overflow-y: auto;
+  height: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  scroll-behavior: smooth;
+}
+
+.profile-page__main {
+  /* margin-left: 240px;  */
+  padding-bottom: 4rem;
+  flex: 1;
+  overflow-y: auto;
+  height: 100%;
+}
+/* Card */
+.profile-page__card {
+  background: var(--color-surface);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-page__card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.profile-page__section-note {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Account Header */
+.profile-page__account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-page__avatar-block {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-page__avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.profile-page__name-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-page__org-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.profile-page__badge {
+  font-size: 0.7rem;
+  background: #eef6ff;
+  color: #2563eb;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.profile-page__meta {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.profile-page__account-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.profile-page__btn {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.profile-page__btn.edit {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.profile-page__btn.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Account Meta */
+.profile-page__account-meta {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.profile-page__label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+}
+
+.profile-page__value {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.profile-page__export-link {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* Preferences */
+.profile-page__pref-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.profile-page__pref-item select {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  font-size: 0.85rem;
+}
+
+
+.profile-page__pref-item select {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  font-size: 0.85rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+

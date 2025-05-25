@@ -1,0 +1,105 @@
+
+.ticket-sidebar {
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 340px;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: var(--color-text);
+}
+
+.info-group {
+  margin-bottom: 1rem;
+}
+
+.info-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.info-box {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+
+.tags-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+
+.tag-badge {
+  background-color: #e5e7eb;
+  color: #374151;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.sidebar-select {
+  font-size: 0.85rem;
+}
+
+.ticket-actions {
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-ghost {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border-light);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-bg-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.history-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.history-list li {
+  margin-bottom: 0.75rem;
+}
+
+.history-list p {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.75rem;
+  color: var(--color-text);
+}
+

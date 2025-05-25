@@ -1,0 +1,92 @@
+.ticket-conversation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.conversation-header {
+  margin-bottom: 1rem;
+}
+
+.conversation-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.conversation-header p {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.conversation-thread {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 1rem;
+  scrollbar-width: thin;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.message-bubble {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  padding: 10px 12px;
+  max-width: 85%;
+}
+
+.message-meta {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.message-content {
+  font-size: 0.85rem;
+  color: var(--color-light);
+  word-wrap: break-word;
+  font-weight: 500;
+}
+
+
+/* Fix spacing on send button */
+.send-button {
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  padding: 8px 16px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.send-button:hover {
+  background-color: var(--color-primary-hover);
+}

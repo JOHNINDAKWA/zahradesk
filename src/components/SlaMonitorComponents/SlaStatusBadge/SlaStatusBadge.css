@@ -1,0 +1,86 @@
+.sla-status-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.sla-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* Badge Styles */
+.sla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-light);
+  transition: background-color 0.2s ease;
+  cursor: default;
+}
+
+.sla-badge .dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 0.85rem;
+  border-radius: 50%;
+}
+
+/* Badge Color Variants */
+.sla-badge--green {
+  color: #10b981;
+  border-color: #d1fae5;
+  background-color: #ecfdf5;
+}
+
+.sla-badge--yellow {
+  color: #f59e0b;
+  border-color: #fef3c7;
+  background-color: #fffbeb;
+}
+
+.sla-badge--red {
+  color: #ef4444;
+  border-color: #fee2e2;
+  background-color: #fef2f2;
+}
+
+.sla-badge--gray {
+  color: #6b7280;
+  border-color: #e5e7eb;
+  background-color: #f9fafb;
+}
+
+/* SLA Rules Link */
+.sla-rules-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: var(--color-surface);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.sla-rules-link:hover {
+  background-color: var(--color-row-odd);
+  color: var(--color-primary-hover);
+}

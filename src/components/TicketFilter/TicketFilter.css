@@ -1,0 +1,60 @@
+.filter-panel {
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 340px;
+}
+
+.filter-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.search-input:focus{
+   border: 1px solid var(--color-border-light);
+   color: var(--color-muted);
+}
+
+.filter-group {
+  margin-bottom: 1rem;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+
+.filter-select {
+  font-size: 0.85rem;
+}
+
+.apply-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #805ef0;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: #6c4bd4;
+}

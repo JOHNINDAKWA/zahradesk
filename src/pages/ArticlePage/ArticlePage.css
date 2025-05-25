@@ -1,0 +1,218 @@
+.article-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.article-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.article-breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  gap: 6px;
+}
+
+.article-breadcrumb a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.article-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.article-back-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.article-back-link:hover {
+  color: var(--color-primary-hover);
+}
+
+
+@media (min-width: 960px) {
+  .article-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.article-left {
+  flex: 3;
+  padding-right: var(--space-lg);
+}
+
+.article-right {
+  flex: 1;
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Meta Information Chips */
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.article-meta span {
+  background-color: var(--color-row-odd);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Title & Description */
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.article-description {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* Tags */
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.article-tags span {
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Article Content */
+.article-content {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.article-content p {
+  margin-bottom: var(--space-md);
+}
+
+.article-content h3 {
+  font-size: 1.05rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.article-content ol {
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.article-content li {
+  margin-bottom: var(--space-sm);
+  list-style: decimal !important;
+
+}
+
+/* Sidebar Styles */
+.article-right {
+  flex: 1;
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Generic Section Card Style */
+.article-right .sidebar-section {
+  /* border: 1px solid var(--color-border-light); */
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-md);
+  background-color: var(--color-surface);
+  box-shadow: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.article-right .sidebar-section:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Section Titles */
+.article-right .sidebar-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Link List */
+.article-right ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.article-right li {
+  margin-bottom: var(--space-sm);
+}
+
+.article-right a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-light);
+  display: block;
+  padding: 6px 0;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.article-right a:hover {
+  background-color: var(--color-row-odd);
+  color: var(--color-primary-hover);
+}
+
+
+.article-layout {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
