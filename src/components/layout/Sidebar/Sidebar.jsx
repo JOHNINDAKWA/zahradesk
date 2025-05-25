@@ -79,7 +79,7 @@ const Sidebar = ({ collapsed }) => {
       <div className="sidebar-top">
         <div className="sidebar-header">
           <FiLifeBuoy className="logo-icon" />
-          {!collapsed && <span className="logo-text">ZahraDesk</span>}
+          {!collapsed && <span className="logo-text">QuickDesk</span>}
 
         </div>
 

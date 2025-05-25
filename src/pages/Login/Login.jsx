@@ -26,7 +26,7 @@ const Login = () => {
       <div className="login-card">
         <div className="login-brand">
           <img src="/logo.png" alt="Logo" className="login-logo" />
-          <h2>ZahraDesk</h2>
+          <h2>QuickDesk</h2>
         </div>
 
         <form onSubmit={handleEmailLogin} className="login-form">
