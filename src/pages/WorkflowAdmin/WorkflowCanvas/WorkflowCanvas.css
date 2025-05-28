@@ -1,0 +1,86 @@
+/* ✅ WorkflowCanvas.css */
+.workflow-canvas-container {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  background-color: #1f1f2b; /* Force dark background */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Small screen fallback */
+@media (max-width: 768px) {
+  .workflow-canvas-container {
+    height: 300px; /* or auto if you'd rather let it grow */
+    border-radius: 0;
+  }
+
+  .workflow-canvas-add-btn {
+    bottom: var(--space-sm);
+    font-size: 0.85rem;
+    padding: var(--space-xs) var(--space-md);
+  }
+}
+
+.react-flow__node-default {
+  padding: var(--space-sm);
+  background-color: #2a3a55 !important;  /* Desaturated deep blue */
+  color: #e6eaf3 !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #3a4b66;
+  transition: transform 0.1s ease;
+}
+
+
+.react-flow__node-default:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+.react-flow__node-default.selected {
+  outline: 1px solid #587cf2; /* Dark theme hover primary */
+}
+
+/* Edge color */
+.react-flow__edge-path {
+  stroke: #587cf2;
+  stroke-width: 1px;
+}
+
+/* MiniMap */
+.react-flow__minimap {
+  background-color: #2c2c3b;
+  border-radius: var(--radius-sm);
+}
+
+/* Add stage button */
+.workflow-canvas-add-btn {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3a5bdc;
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.9rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.workflow-canvas-add-btn:hover {
+  background-color: #587cf2;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.react-flow__controls-button {
+  margin-bottom: 4px;
+  padding: 3px !important;
+}

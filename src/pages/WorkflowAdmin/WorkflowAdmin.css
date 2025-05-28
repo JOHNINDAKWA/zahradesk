@@ -1,0 +1,53 @@
+.workflow-admin-page {
+  display: grid;
+  grid-template-columns: 1fr 3.5fr 1fr;
+  height: 100vh;
+  gap: var(--space-sm);
+  background-color: var(--color-bg);
+  padding: var(--space-md);
+  overflow: hidden;
+}
+
+/* Medium screens: hide config panel */
+@media (max-width: 1100px) {
+  .workflow-admin-page {
+    grid-template-columns: 220px 1fr;
+    grid-template-areas: "sidebar canvas";
+  }
+
+  .workflow-config-panel {
+    display: none;
+  }
+}
+
+/* Small screens: vertical stacking */
+@media (max-width: 768px) {
+  .workflow-admin-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "sidebar"
+      "canvas"
+      "config";
+    height: auto;
+    padding: var(--space-sm);
+  }
+
+  .workflow-list-sidebar {
+    grid-area: sidebar;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .workflow-canvas-container {
+    grid-area: canvas;
+    height: 400px;
+  }
+
+  .workflow-config-panel {
+    grid-area: config;
+    display: block;
+    border-left: none;
+    border-top: 1px solid var(--color-border-light);
+  }
+}

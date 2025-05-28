@@ -1,0 +1,98 @@
+
+/* ✅ WorkflowListSidebar.css */
+.workflow-list-sidebar {
+  background-color: var(--color-section-left);
+  border-right: 1px solid var(--color-border-light);
+  padding: var(--space-md);
+  overflow-y: auto;
+}
+
+.workflow-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.workflow-sidebar-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.workflow-sidebar-new-btn {
+  background: linear-gradient(135deg, #3a5bdc, #587cf2);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.workflow-sidebar-new-btn:hover {
+  background: linear-gradient(135deg, #4a6bf5, #6a8df7);
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.workflow-sidebar-search-box {
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.workflow-sidebar-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.workflow-sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 0.9rem;
+}
+
+.workflow-sidebar-list li {
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Hover */
+.workflow-sidebar-list li:hover {
+  background-color: #d6e4ff;
+  color: #1f1f1f;
+}
+
+/* Active (Selected) */
+.workflow-sidebar-list li.active {
+  background-color: #d6e4ff;
+  color: #1f1f1f;
+  font-weight: 500;
+  box-shadow:
+    inset 2px 0 0 #4680fe,     /* left accent */
+    inset -2px 0 0 #4680fe;    /* right accent */
+}

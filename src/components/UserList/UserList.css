@@ -102,8 +102,8 @@
 }
 .job-title {
   font-size: 0.7rem;
-  background-color: #f0f4ff; /* Soft blue background */
-  color: var(--color-primary); /* Deep blue text */
+  background-color: var(--color-title); 
+  color: var(--color-text-title); 
   padding: 4px 10px;
   border-radius: 999px;
   font-weight: 600;

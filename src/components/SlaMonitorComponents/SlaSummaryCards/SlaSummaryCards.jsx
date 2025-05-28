@@ -7,8 +7,8 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 const slaCards = [
   {
     title: "SLA On-Time Rate",
-    value: 176,
-    percent: 84,
+    value: 146,
+    percent: 54,
     sparkline: [
       { value: 3 },
       { value: 5 },
@@ -32,9 +32,9 @@ const slaCards = [
     color: "#F44336",
   },
   {
-    title: "Total Tickets",
-    value: 200,
-    percent: 100,
+    title: "At Risk Tickets",
+    value: 30,
+    percent: 25,
     sparkline: [
       { value: 1 },
       { value: 2 },
@@ -42,7 +42,7 @@ const slaCards = [
       { value: 3 },
       { value: 2 },
     ],
-    color: "#2196F3",
+    color: "#f59e0b",
   },
 ];
 

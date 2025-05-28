@@ -61,6 +61,7 @@ const navSections = [
     title: "Reports & Admin",
     items: [
       { label: "SLA Monitor", icon: <FiClock />, route: "/sla-monitor" },
+      { label: "Workflow Builder", icon: <FiClock />, route: "/workflow-admin" },
       { label: "Reports", icon: <FiBarChart2 />, route: "/reports" },
       { label: "Manage Users", icon: <FiUserCheck />, route: "/users" },
     ],

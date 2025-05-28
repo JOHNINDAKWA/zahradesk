@@ -1,6 +1,5 @@
 /* index.css */
 
-
 /* =========================
    Base CSS Variables (Light Theme)
    ========================= */
@@ -13,17 +12,19 @@
   --color-text: #1f1f1f;
   --color-light: #545454;
   --color-muted: #6b7280c5;
-  --color-border-light:#e5e7eb;
+  --color-border-light: #e5e7eb;
+  --color-text-title: #4680fe;
+
+  --color-title: #e7eef6;
 
   /* Border & Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-    /* Table Row Backgrounds */
+  /* Table Row Backgrounds */
   --color-row-odd: #f9f9f9;
   --color-row-even: #ffffff;
-
 
   /* Spacing */
   --space-xs: 4px;
@@ -39,25 +40,31 @@
 
   --color-section-left: #f5f9ff;
   --color-section-right: #f0f7f4;
-
 }
 
-/* =========================
-   Dark Theme Overrides
-   ========================= */
 .dark {
-  --color-bg: #1f1f2b;
-  --color-surface: #2c2c3b;
-  --color-text: #e2e2e2;
-  --color-light: #e2e2e2;
-  --color-muted: #a1a1b5;
-  --color-primary: #3a5bdc;
-  --color-primary-hover: #587cf2;
-  --color-section-left: #26283a;
-  --color-section-right: #2e3047;
-  --color-border-light:#f1f4fb1b;
-  --color-row-odd: #2c2c3b; 
-  --color-row-even: #1f1f2b;
+  --color-bg: #12151c;
+  --color-surface: #1a1d26;
+  --color-text: #e0e4ec;
+  --color-light: #cbd5e1;
+  --color-muted: #7a8699;
+  --color-border-light: #2a2f3a;
+
+  --color-title: #2a2f3a;
+  --color-text-title: #9ebcff;
+
+  --color-primary: #0143b5;
+  --color-primary-hover: #367af6;
+
+  --color-section-left: #1b1f28;
+  --color-section-right: #1c222c;
+
+  --color-row-odd: #1f232d;
+  --color-row-even: #161b22;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.35);
 }
 
 /* =========================
@@ -69,9 +76,10 @@
   padding: 0;
 }
 
-html, body {
-  font-family: 'Manrope', sans-serif;
- scroll-behavior: smooth !important;
+html,
+body {
+  font-family: "Manrope", sans-serif;
+  scroll-behavior: smooth !important;
   font-size: 16px;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -86,7 +94,7 @@ a {
 a:hover {
   color: var(--color-primary-hover);
 }
-li{
+li {
   list-style: none;
 }
 
@@ -130,23 +138,34 @@ li{
   color: white;
 }
 
-
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--color-primary);
 }
 
-/* Scrollbar styling (optional) */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #9eb1ff;
-  border-radius: var(--radius-sm);
+  background-color: #95a8f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
+/* Applies to all scrollable elements */
+* {
+  scrollbar-width: thin;            
+  scrollbar-color: #9eb1ff transparent; 
+}
 
-button, input, select {
+button,
+input,
+select {
   font-family: inherit;
   font-size: inherit;
   border: none;
@@ -176,7 +195,6 @@ input[type="checkbox"] {
   margin-top: 1rem;
 }
 
-
 /* Refine quill editor container */
 .editor-wrapper {
   display: flex;
@@ -197,8 +215,9 @@ input[type="checkbox"] {
   margin-bottom: 6px;
 }
 
-.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
-    color: var(--color-text) !important;
+.ql-snow.ql-toolbar button,
+.ql-snow .ql-toolbar button {
+  color: var(--color-text) !important;
 }
 
 /* Style the editor */

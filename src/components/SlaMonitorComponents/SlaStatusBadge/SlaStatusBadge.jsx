@@ -1,7 +1,7 @@
 import React from 'react';
 import './SlaStatusBadge.css';
-import { FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import SlaFilters from '../SlaFilters/SlaFilters';
 
 const statusConfig = {
   'On Track': {
@@ -37,9 +37,12 @@ const SlaStatusBadge = () => {
         ))}
       </div>
 
-      <Link to="/sla-rules" className="sla-rules-link">
-        SLA Rules <FiExternalLink />
-      </Link>
+      <div>
+        <SlaFilters />
+      </div>
+
+       
+
     </div>
   );
 };
