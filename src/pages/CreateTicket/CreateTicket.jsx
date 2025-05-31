@@ -1,57 +1,14 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import "./CreateTicket.css";
-import CustomQuillEditor from "../../components/TicketConversation/CustomQuillEditor";
 import { FiUploadCloud } from "react-icons/fi";
+import CustomQuillEditor from "../../components/TicketConversation/CustomQuillEditor";
+import "./CreateTicket.css";
+import getCustomSelectStyles from "../../utils/reactSelectStyles"; // adjust path as needed
 
-const isDark = document.documentElement.classList.contains("dark");
-
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: isDark ? '#1f2937' : 'var(--color-surface)',
-    borderColor: state.isFocused ? 'var(--color-primary)' : 'var(--color-border-light)',
-    boxShadow: 'none',
-    '&:hover': {
-      borderColor: 'var(--color-primary-hover)',
-    },
-    color: isDark ? '#f9fafb' : 'var(--color-text)',
-    fontSize: '0.85rem',
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    color: isDark ? '#f9fafb' : 'var(--color-text)',
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused
-      ? (isDark ? '#374151' : 'var(--color-primary-hover)')
-      : 'transparent',
-    color: isDark ? '#f9fafb' : 'var(--color-text)',
-    cursor: 'pointer',
-    fontSize: '0.85rem',
-  }),
-  menu: (provided) => ({
-    ...provided,
-    backgroundColor: isDark ? '#1f2937' : 'var(--color-surface)',
-    border: `1px solid ${isDark ? '#374151' : 'var(--color-border-light)'}`,
-    zIndex: 20,
-  }),
-  placeholder: (provided) => ({
-    ...provided,
-    color: isDark ? '#9ca3af' : '#6b7280',
-  }),
-  input: (provided) => ({
-    ...provided,
-    color: isDark ? '#f9fafb' : 'inherit',
-  }),
-};
-
-
-const issueTypes = [
-  { value: "bug", label: "Bug / System Error" },
-  { value: "access", label: "Access Request" },
-  { value: "hardware", label: "Hardware Issue" },
+const departments = [
+  { value: "it", label: "IT" },
+  { value: "hr", label: " HR" },
+  { value: "finance", label: " Finance" },
 ];
 
 const priorities = [
@@ -67,21 +24,52 @@ const locations = [
   { value: "remote", label: "Remote" },
 ];
 
+const itServiceTypes = [
+  { value: "account", label: "Create New Account" },
+  { value: "hardware", label: "Request Hardware" },
+  { value: "access", label: "System Access" },
+];
+
+const hrServiceTypes = [
+  { value: "leave", label: "Leave Application Assistance" },
+  { value: "benefits", label: "Benefits Clarification" },
+  { value: "recruitment", label: "Recruitment Support" },
+];
+
+const financeServiceTypes = [
+  { value: "reimbursement", label: "Reimbursement Request" },
+  { value: "report", label: "Financial Report Access" },
+  { value: "budget", label: "Budget Query" },
+];
+
 const CreateTicket = () => {
+  const [department, setDepartment] = useState(null);
+  const [ticketType, setTicketType] = useState(null);
+
   const [summary, setSummary] = useState("");
   const [issueType, setIssueType] = useState(null);
+  const [serviceType, setServiceType] = useState(null);
   const [system, setSystem] = useState("");
-  const [priority, setPriority] = useState(priorities[1]);
+  const [priority, setPriority] = useState(priorities[2]);
   const [location, setLocation] = useState(null);
   const [description, setDescription] = useState("");
   const [attachment, setAttachment] = useState(null);
 
+  const getServiceOptions = () => {
+    if (department === "it") return itServiceTypes;
+    if (department === "hr") return hrServiceTypes;
+    if (department === "finance") return financeServiceTypes;
+    return [];
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // send form data
     console.log({
+      department,
+      ticketType,
       summary,
       issueType,
+      serviceType,
       system,
       priority,
       location,
@@ -92,117 +80,191 @@ const CreateTicket = () => {
 
   return (
     <div className="ticket-form-container">
-      <h2 className="form-title">Tech Service Desk</h2>
+      <h2 className="form-title">Request a Service or Report an Issue</h2>
       <p className="form-subtext">
-        Welcome! You can raise a request for any Tech related support here using
-        the options provided.
+        Start by selecting the target department and request category.
       </p>
 
-      <form onSubmit={handleSubmit} className="ticket-form">
+      {/* Step 1 & 2: Department + Request Type side by side */}
+      <div className="form-row2">
         <label>
           <span>
-            Brief Summary of the issue{" "}
+            Select the department to handle your issue
             <strong className="red-asterisk">*</strong>
           </span>
-          <input
-            type="text"
-            value={summary}
-            onChange={(e) => setSummary(e.target.value)}
-            placeholder="E.g. Unable to login to Emrply – KE"
-            required
+          <Select
+            options={departments}
+            value={departments.find((opt) => opt.value === department)}
+            onChange={(selected) => {
+              setDepartment(selected?.value || null);
+              setTicketType(null);
+              setServiceType(null);
+            }}
+            placeholder="Choose department"
+            styles={getCustomSelectStyles()}
           />
         </label>
 
-        <div className="form-row">
-          <label>
-            <span>What type of problem would you like to report?</span>
-            <Select
-              options={issueTypes}
-              value={issueType}
-              onChange={setIssueType}
-              placeholder="Select issue type"
-              className="form-select"
-              styles={customStyles}
-              classNamePrefix="custom-select"
-            />
-          </label>
+        <label style={{ flex: 1, minWidth: "250px" }}>
+          <span>
+            Select Request Type <strong className="red-asterisk">*</strong>
+          </span>
+          <Select
+            options={[
+              { value: "problem", label: "Report a Problem" },
+              { value: "service", label: "Service Request" },
+            ]}
+            value={
+              ticketType
+                ? {
+                    value: ticketType,
+                    label:
+                      ticketType === "problem"
+                        ? "Report a Problem"
+                        : "Service Request",
+                  }
+                : null
+            }
+            onChange={(selected) => setTicketType(selected?.value || null)}
+            placeholder="Choose request type"
+            styles={getCustomSelectStyles()}
+            isDisabled={!department}
+          />
+        </label>
+      </div>
 
+      {/* Step 3: Dynamic Form */}
+      {ticketType && (
+        <form onSubmit={handleSubmit} className="ticket-form">
           <label>
             <span>
-              System Affected <strong className="red-asterisk">*</strong>
+              Brief Summary <strong className="red-asterisk">*</strong>
             </span>
             <input
               type="text"
-              value={system}
-              onChange={(e) => setSystem(e.target.value)}
-              placeholder="Type Emr for Emrply, Lap for Laptop, Tab for Tablet..."
+              value={summary}
+              onChange={(e) => setSummary(e.target.value)}
               required
             />
           </label>
-        </div>
 
-        <label>
-          <span>
-            Please explain the incident in detail below{" "}
-            <strong className="red-asterisk">*</strong>
-          </span>
-          <CustomQuillEditor value={description} onChange={setDescription} />
-        </label>
+          {ticketType === "problem" && department === "it" && (
+            <>
+              <div className="form-row">
+                <label>
+                  <span>
+                    Problem Type <strong className="red-asterisk">*</strong>
+                  </span>
+                  <Select
+                    options={[
+                      { value: "bug", label: "Bug / System Error" },
+                      { value: "hardware", label: "Hardware Issue" },
+                      { value: "connectivity", label: "Connectivity Problem" },
+                    ]}
+                    value={issueType}
+                    onChange={setIssueType}
+                    styles={getCustomSelectStyles()}
+                  />
+                </label>
+                <label>
+                  <span>System Affected</span>
+                  <input
+                    type="text"
+                    value={system}
+                    onChange={(e) => setSystem(e.target.value)}
+                  />
+                </label>
+              </div>
+            </>
+          )}
 
-        <div className="form-row">
+          {ticketType === "service" && (
+            <>
+              <div className="form-row">
+                <label>
+                  <span>
+                    Service Type <strong className="red-asterisk">*</strong>
+                  </span>
+                  <Select
+                    options={getServiceOptions()}
+                    value={serviceType}
+                    onChange={setServiceType}
+                    styles={getCustomSelectStyles()}
+                  />
+                </label>
+                {department === "it" && (
+                  <label>
+                    <span>Relating System</span>
+                    <input
+                      type="text"
+                      value={system}
+                      onChange={(e) => setSystem(e.target.value)}
+                    />
+                  </label>
+                )}
+              </div>
+            </>
+          )}
+
+          {/* Description */}
           <label>
             <span>
-              What is the priority of the problem that you are reporting?
+              Description <strong className="red-asterisk">*</strong>
             </span>
-            <Select
-              options={priorities}
-              value={priority}
-              onChange={setPriority}
-              className="form-select"
-              styles={customStyles}
-              classNamePrefix="custom-select"
-            />
+            <CustomQuillEditor value={description} onChange={setDescription} />
           </label>
 
-          <label>
-            <span>Location</span>
-            <Select
-              options={locations}
-              value={location}
-              onChange={setLocation}
-              className="form-select"
-              styles={customStyles}
-              classNamePrefix="custom-select"
-            />
-          </label>
-        </div>
+          {/* Priority & Location */}
+          {department === "it" && (
+            <div className="form-row">
+              <label>
+                <span>Priority</span>
+                <Select
+                  options={priorities}
+                  value={priority}
+                  onChange={setPriority}
+                  styles={getCustomSelectStyles()}
+                />
+              </label>
+              <label>
+                <span>Location</span>
+                <Select
+                  options={locations}
+                  value={location}
+                  onChange={setLocation}
+                  styles={getCustomSelectStyles()}
+                />
+              </label>
+            </div>
+          )}
 
-        <label className="file-upload-label">
-          <span>Attach a screenshot or any other supporting document</span>
-          <div className="file-upload-box">
-            <FiUploadCloud size={18} style={{ marginRight: 6 }} />
-            <span>
-              {attachment
-                ? attachment.name
-                : "Drag and drop a file or click to browse"}
-            </span>
-            <input
-              type="file"
-              onChange={(e) => setAttachment(e.target.files[0])}
-              className="file-input-hidden"
-            />
+          {/* File Upload */}
+          <label className="file-upload-label">
+            <span>Attachment (optional)</span>
+            <div className="file-upload-box">
+              <FiUploadCloud size={18} style={{ marginRight: 6 }} />
+              <span>
+                {attachment ? attachment.name : "Click or drag file here"}
+              </span>
+              <input
+                type="file"
+                onChange={(e) => setAttachment(e.target.files[0])}
+                className="file-input-hidden"
+              />
+            </div>
+          </label>
+
+          {/* Actions */}
+          <div className="form-actions">
+            <button type="submit" className="btn-primary">
+              Submit
+            </button>
+            <button type="reset" className="btn-secondary">
+              Cancel
+            </button>
           </div>
-        </label>
-
-        <div className="form-actions">
-          <button type="submit" className="btn-primary">
-            Send
-          </button>
-          <button type="reset" className="btn-secondary">
-            Cancel
-          </button>
-        </div>
-      </form>
+        </form>
+      )}
     </div>
   );
 };

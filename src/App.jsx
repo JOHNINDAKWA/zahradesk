@@ -27,6 +27,7 @@ import CreateUser from './pages/CreateUser/CreateUser';
 import SlaRules from './pages/SlarRules/SlaRules';
 import NewSlaRule from './pages/NewSlaRule/NewSlaRule';
 import WorkflowAdmin from './pages/WorkflowAdmin/WorkflowAdmin';
+import RequestTypeConfigurator from './pages/RequestTypeConfigurator/RequestTypeConfigurator';
 
 
 const AppRoutes = () => {
@@ -67,6 +68,7 @@ const AppRoutes = () => {
         {/* Admin */}
         <Route path="/reports" element={<div>Reports Coming soon</div>} />
         <Route path="/workflow-admin" element={<WorkflowAdmin/>} />
+        <Route path="/request-type-config" element={<RequestTypeConfigurator/>} />
         <Route path="/users" element={<UserManagement/>} />
         <Route path="/create-user" element={<CreateUser/>} />
         <Route path="/profile" element={<Profile />} />

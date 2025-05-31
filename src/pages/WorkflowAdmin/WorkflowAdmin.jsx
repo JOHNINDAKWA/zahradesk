@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './WorkflowAdmin.css';
-import WorkflowListSidebar from './WorkflowListSidebar/WorkflowListSidebar';
 import WorkflowCanvas from './WorkflowCanvas/WorkflowCanvas';
 import WorkflowConfigPanel from './WorkflowConfigPanel/WorkflowConfigPanel';
+import WorkflowDetailsSidebar from './WorkflowListSidebar/WorkflowListSidebar';
 
 const WorkflowAdmin = () => {
+  const location = useLocation();
+  const mapping = location.state?.mapping;
+
   const [workflows, setWorkflows] = useState({
-    'IT Support': {
+    [mapping.workflow]: {
       nodes: [
         { id: '1', type: 'default', data: { label: 'New' }, position: { x: 100, y: 100 } },
         { id: '2', type: 'default', data: { label: 'Assigned' }, position: { x: 300, y: 100 } },
@@ -19,46 +23,15 @@ const WorkflowAdmin = () => {
     },
   });
 
-  const [selectedWorkflowName, setSelectedWorkflowName] = useState('IT Support');
   const [selectedNodeId, setSelectedNodeId] = useState(null);
-
-  const selectedWorkflow = workflows[selectedWorkflowName] || { nodes: [], edges: [] };
+  const selectedWorkflow = workflows[mapping.workflow];
   const selectedNode = selectedWorkflow.nodes.find((n) => n.id === selectedNodeId);
-
-  const handleAddWorkflow = () => {
-    const newName = `Workflow ${Object.keys(workflows).length + 1}`;
-    setWorkflows({
-      ...workflows,
-      [newName]: {
-        nodes: [
-          {
-            id: '1',
-            type: 'default',
-            data: { label: 'Start' },
-            position: { x: 100, y: 100 },
-          },
-        ],
-        edges: [],
-      },
-    });
-    setSelectedWorkflowName(newName);
-    setSelectedNodeId(null);
-  };
-
-  const handleSelectWorkflow = (name) => {
-    setSelectedWorkflowName(name);
-    setSelectedNodeId(null);
-  };
-
-  const handleNodeSelect = (node) => {
-    setSelectedNodeId(node.id);
-  };
 
   const updateNodes = (newNodes) => {
     setWorkflows((prev) => ({
       ...prev,
-      [selectedWorkflowName]: {
-        ...prev[selectedWorkflowName],
+      [mapping.workflow]: {
+        ...prev[mapping.workflow],
         nodes: newNodes,
       },
     }));
@@ -67,8 +40,8 @@ const WorkflowAdmin = () => {
   const updateEdges = (newEdges) => {
     setWorkflows((prev) => ({
       ...prev,
-      [selectedWorkflowName]: {
-        ...prev[selectedWorkflowName],
+      [mapping.workflow]: {
+        ...prev[mapping.workflow],
         edges: newEdges,
       },
     }));
@@ -89,14 +62,17 @@ const WorkflowAdmin = () => {
     updateNodes([...currentNodes, newNode]);
   };
 
+  const handleNodeSelect = (node) => {
+    setSelectedNodeId(node.id);
+  };
+
   return (
     <div className="workflow-admin-page">
-      <WorkflowListSidebar
-        workflows={Object.keys(workflows)}
-        selected={selectedWorkflowName}
-        onSelect={handleSelectWorkflow}
-        onAddWorkflow={handleAddWorkflow}
-      />
+      {/* Header Section Showing Mapping Info */}
+     <WorkflowDetailsSidebar mapping={mapping} />
+
+
+      {/* Workflow canvas and config panel */}
       <WorkflowCanvas
         nodes={selectedWorkflow.nodes}
         edges={selectedWorkflow.edges}

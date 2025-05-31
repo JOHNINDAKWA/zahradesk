@@ -1,0 +1,207 @@
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.mapping-table th,
+.mapping-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.mapping-table tr:nth-child(even) {
+  background-color: var(--color-row-even);
+}
+
+.mapping-table tr:nth-child(odd) {
+  background-color: var(--color-row-odd);
+}
+
+.mapping-form-row input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.configurator-title {
+  margin-bottom: var(--space-md);
+  font-size: 1.5rem;
+  color: var(--color-text-title);
+}
+
+.configurator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.link-button {
+  all: unset;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link-button:hover {
+  color: var(--color-primary-hover);
+  text-decoration-thickness: 2px;
+}
+
+
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 18, 30, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Modal card */
+.modal-card {
+  background-color: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  width: 400px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.modal-card h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-title);
+}
+
+.modal-group label {
+  font-size: 0.85rem;
+  color: var(--color-light);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.modal-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+.modal-actions .cancel {
+  background-color: var(--color-muted);
+}
+.modal-actions .cancel:hover {
+  background-color: #6b7280;
+}
+
+
+.modal-group .react-select__control {
+  background-color: var(--color-surface);
+  border-color: var(--color-border-light);
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+
+/* ---------------------------
+   Media Queries for Responsiveness
+--------------------------- */
+
+/* For medium screens (tablets) */
+@media (max-width: 1024px) {
+  .configurator-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .modal-card {
+    width: 90%;
+    padding: var(--space-md);
+  }
+
+  .mapping-table th,
+  .mapping-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* For small screens (phones) */
+@media (max-width: 768px) {
+  .mapping-table {
+    font-size: 0.85rem;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .modal-card {
+    width: 95%;
+    padding: var(--space-md);
+  }
+
+  .configurator-title {
+    font-size: 1.25rem;
+  }
+
+  .link-button {
+    font-size: 0.85rem;
+  }
+
+  .modal-group input,
+  .modal-group .react-select__control {
+    font-size: 0.85rem;
+  }
+
+  .mapping-table th:first-child,
+  .mapping-table td:first-child {
+    width: auto;
+  }
+}
+
+/* For very small screens (below 480px) */
+@media (max-width: 480px) {
+  .modal-card h3 {
+    font-size: 1rem;
+  }
+
+  .modal-group label {
+    font-size: 0.75rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}

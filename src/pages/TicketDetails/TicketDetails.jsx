@@ -7,7 +7,7 @@ import TicketSidebarDetails from "../../components/TicketSidebarDetails/TicketSi
 const TicketDetails = () => {
   const { id } = useParams();
   const location = useLocation();
-  const navigate = useNavigate(); // ✅ move it here inside the component
+  const navigate = useNavigate(); 
   const ticket = location.state?.ticket;
 
   return (

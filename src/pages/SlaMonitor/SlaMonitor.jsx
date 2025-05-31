@@ -13,7 +13,7 @@ const SlaMonitor = () => {
       <div className="sla-monitor__header">
         <h2>SLA Monitor</h2>
         <Link to="/sla-rules" className="sla-rules-link">
-          SLA Rules <FiExternalLink />
+          SLA Policies <FiExternalLink />
         </Link>
       </div>
 
