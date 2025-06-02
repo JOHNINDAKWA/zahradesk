@@ -1,0 +1,312 @@
+/* ============================
+   Container & Toolbar
+============================ */
+
+.org-page {
+  padding: var(--space-lg);
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.org-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+.org-toolbar__title {
+  font-size: 1.75rem;
+  color: var(--color-text-title);
+}
+
+.org-toolbar__actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.org-toolbar__search {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.org-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.org-btn--primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.org-btn--secondary {
+  background: var(--color-border-light);
+  color: var(--color-text);
+}
+
+.org-btn--danger {
+  background: #ef4444;
+  color: white;
+}
+
+/* ============================
+   Organization List & Row
+============================ */
+
+.org-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.org-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s ease;
+}
+
+.org-row--inactive {
+  background: #fef2f2;
+}
+
+.org-row__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-width: 250px;
+}
+
+.org-row__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.org-row__name h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.org-row__slug {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.org-row__middle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--color-light);
+  padding: 0 1rem;
+  justify-content: flex-start;
+}
+
+.org-row__middle div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.org-row__right {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-xl);
+  min-width: 180px;
+}
+
+
+
+
+
+.org-row__middle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  flex: 1;
+  padding: 0 1rem;
+  justify-content: flex-start;
+}
+
+.org-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--color-row-odd);
+  color: var(--color-light);
+  border-radius: var(--radius-md);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.org-pill:hover {
+  background: var(--color-row-even);
+  transform: translateY(-2px);
+}
+
+/* Variants */
+.org-pill--pro {
+  background: #e0edff;
+  color: #1d4ed8;
+}
+
+.org-pill--enterprise {
+  background: #e6fffa;
+  color: #0f766e;
+}
+
+.org-pill--free {
+  background: #fef9c3;
+  color: #92400e;
+}
+
+.org-pill--email {
+  font-family: monospace;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+
+
+
+
+/* ============================
+   Status Badge & Icons
+============================ */
+
+.org-row__status .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.badge--green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge--red {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ============================
+   Actions (Icons)
+============================ */
+
+.org-col__actions {
+  display: flex;
+
+  gap: var(--space-md);
+}
+
+.org-btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-light);
+  
+}
+
+.org-btn-icon:hover {
+  color: var(--color-primary);
+}
+
+.org-btn-icon--danger {
+  color: #ef4444;
+}
+
+/* ============================
+   Modal & Form
+============================ */
+
+.org-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.org-modal {
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-lg);
+}
+
+.org-modal__title {
+  margin-bottom: var(--space-md);
+  font-size: 1.25rem;
+  color: var(--color-text-title);
+}
+
+.org-form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-md);
+}
+
+.org-form__label {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.org-form__input,
+.org-form__select {
+  padding: 0.6rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.org-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* ============================
+   Icon Colors (Overrides)
+============================ */
+
+.org-icon--green {
+  color: #10b981;
+}
+
+.org-icon--red {
+  color: #ef4444;
+}

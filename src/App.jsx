@@ -29,6 +29,7 @@ import NewSlaRule from './pages/NewSlaRule/NewSlaRule';
 import WorkflowAdmin from './pages/WorkflowAdmin/WorkflowAdmin';
 import RequestTypeConfigurator from './pages/RequestTypeConfigurator/RequestTypeConfigurator';
 import MyTicketsCalendar from './pages/MyTicketsCalendar/MyTicketsCalendar';
+import Organizations from './pages/Organizations/Organizations';
 
 
 const AppRoutes = () => {
@@ -74,6 +75,8 @@ const AppRoutes = () => {
         <Route path="/users" element={<UserManagement/>} />
         <Route path="/create-user" element={<CreateUser/>} />
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/organizations" element={<Organizations />} />
       </Routes>
     </Layout>
   );

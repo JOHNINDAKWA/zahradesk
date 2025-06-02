@@ -11,11 +11,15 @@
   border-bottom: 1px solid var(--color-border-light);
 }
 
-.mapping-table tr:nth-child(even) {
-  background-color: var(--color-row-even);
+.mapping-table th{
+  background-color: var( --color-section-right );
 }
 
 .mapping-table tr:nth-child(odd) {
+  background-color: var(--color-row-even);
+}
+
+.mapping-table tr:nth-child(even) {
   background-color: var(--color-row-odd);
 }
 

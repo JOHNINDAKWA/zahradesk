@@ -17,6 +17,7 @@ import {
   FiTrendingUp,
   FiX,
 } from "react-icons/fi";
+import { SiAwsorganizations } from "react-icons/si";
 import { BiSolidBoltCircle } from "react-icons/bi";
 import "./Sidebar.css";
 
@@ -69,6 +70,7 @@ const navSections = [
       },
       { label: "Reports", icon: <FiBarChart2 />, route: "/reports" },
       { label: "Manage Users", icon: <FiUserCheck />, route: "/users" },
+      { label: "Organizations", icon: <SiAwsorganizations />, route: "/organizations" },
     ],
   },
 ];
