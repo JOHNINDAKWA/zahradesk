@@ -46,6 +46,8 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
+    white-space: nowrap; /* 👈 prevent text from wrapping */
+  flex-shrink: 0;       
 }
 
 .create-ticket-btn:hover {

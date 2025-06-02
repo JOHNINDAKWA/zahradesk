@@ -122,6 +122,9 @@ li {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background-color 0.2s ease;
+    white-space: nowrap; /* 👈 prevent text from wrapping */
+  flex-shrink: 0;       
+  
 }
 
 .btn:hover {
@@ -176,6 +179,8 @@ select {
 button {
   cursor: pointer;
   border-radius: var(--radius-sm);
+    white-space: nowrap; /* 👈 prevent text from wrapping */
+  flex-shrink: 0;       
 }
 
 input[type="checkbox"] {

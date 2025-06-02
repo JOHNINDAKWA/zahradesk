@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TicketItem.css";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const getInitials = (name) =>
   name
@@ -45,19 +46,17 @@ const TicketItem = ({ ticket, selected, onToggle }) => {
       {/* Main content */}
       <div className="ti-content">
         <div className="ti-subject-row">
-
-
-<Link
-  to={`/ticket/${ticket.id}`}
-  state={{ ticket }}
-  className="ti-subject-link"
-  onClick={(e) => e.stopPropagation()}
->
-  {ticket.subject}
-  {ticket.hasNewReply && (
-    <span className="ti-new-reply-dot" title="New reply" />
-  )}
-</Link>
+          <Link
+            to={`/ticket/${ticket.id}`}
+            state={{ ticket }}
+            className="ti-subject-link"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {ticket.subject}
+            {ticket.hasNewReply && (
+              <span className="ti-new-reply-dot" title="New reply" />
+            )}
+          </Link>
 
           <div className="ti-status-view">
             <span className={`ti-status-pill ${ticket.status.toLowerCase()}`}>
@@ -76,7 +75,8 @@ const TicketItem = ({ ticket, selected, onToggle }) => {
         </div>
 
         <div className="ti-meta">
-          <span>{ticket.name}</span> • <span>{ticket.createdAt}</span> •{" "}
+          {/* <span>{ticket.name}</span> • <span>{ticket.createdAt}</span>  */}
+          <span>{moment(ticket.createdAt).format('MMM D, YYYY h:mm A')}</span>•{" "}
           <span>{ticket.responded}</span>
         </div>
 

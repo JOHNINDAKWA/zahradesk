@@ -13,7 +13,7 @@ const closedTicketsData = [
     category: 'Billing',
     group: 'Finance',
     tags: ['Refund', 'Billing'],
-    createdAt: '2 days ago',
+    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
     responded: 'Responded',
   },
   {
@@ -25,7 +25,7 @@ const closedTicketsData = [
     category: 'Support',
     group: 'Customer Care',
     tags: ['Login', 'Security'],
-    createdAt: '3 days ago',
+    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
     responded: 'Resolved',
   },
   {
@@ -37,7 +37,7 @@ const closedTicketsData = [
     category: 'Account',
     group: 'Support',
     tags: ['Account', 'Request'],
-    createdAt: '5 days ago',
+    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
     responded: 'Closed with confirmation',
   },
   {
@@ -49,7 +49,7 @@ const closedTicketsData = [
     category: 'Technical',
     group: 'Engineering',
     tags: ['Bug', 'Reports'],
-    createdAt: 'Last week',
+   createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
     responded: 'Resolved',
   },
   {
@@ -61,7 +61,7 @@ const closedTicketsData = [
     category: 'UI/UX',
     group: 'Design',
     tags: ['Feedback', 'UI'],
-    createdAt: '1 week ago',
+    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
     responded: 'Reviewed',
   },
 ];

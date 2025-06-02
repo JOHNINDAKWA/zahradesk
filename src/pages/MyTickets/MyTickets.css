@@ -1,3 +1,4 @@
+/* === Layout === */
 .my-tickets-container {
   padding: var(--space-sm);
   height: calc(100vh - var(--space-md) - 1.5rem); /* full height minus title & padding */
@@ -12,7 +13,50 @@
   margin-bottom: var(--space-md);
 }
 
-/* Grid Layout */
+.mytickets-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+}
+/* === Toggle Tabs (List / Calendar) === */
+.ticket-tab-bar {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.ticket-tab {
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-border-light);
+  text-decoration: none;
+  margin: 0 !important;
+}
+
+.ticket-tab:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.ticket-tab.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+
+/* === Ticket Grid Layout === */
 .ticket-page-layout {
   display: grid;
   grid-template-columns: 4fr 1fr;
@@ -33,39 +77,27 @@
   overflow: visible; /* non-scrollable */
 }
 
-
-.ticket-tab-bar {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border-light);
-  padding-bottom: 0.5rem;
-  flex-wrap: wrap;
+/* === Calendar View Wrapper === */
+.ticket-calendar-wrapper {
+  height: 100%;
+  padding-right: 0.5rem;
 }
 
-.ticket-tab {
-  background: var(--color-bg);
+.ticket-calendar-view {
+  flex-grow: 1;
+  height: 100%;
+  background: white;
   border: 1px solid var(--color-border-light);
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  border-radius: 6px;
+  padding: 0.5rem;
+  overflow: hidden;
 }
 
-.ticket-tab.active {
-  background: var(--color-primary);
-  color: white;
+.ticket-calendar-view .rbc-calendar {
+  height: 100% !important;
 }
 
-.close-tab {
-  border: none;
-  background: none;
-  color: var(--color-muted);
-  cursor: pointer;
-}
-
+/* === Miscellaneous Details Area (used elsewhere) === */
 .ticket-details-area {
   margin-top: 1.5rem;
   display: flex;
@@ -77,16 +109,17 @@
   .ticket-details-area {
     flex-direction: row;
   }
+
   .ticket-sidebar-panel {
     width: 300px;
   }
+
   .ticket-conversation-panel {
     flex: 1;
   }
 }
 
-
-/* Responsive fallback */
+/* === Responsive Fallback for Narrow Screens === */
 @media (max-width: 900px) {
   .ticket-page-layout {
     grid-template-columns: 1fr;
@@ -94,5 +127,12 @@
 
   .ticket-filter-panel {
     order: -1;
+  }
+}
+
+/* Optional: Prevent hover on mobile */
+@media (hover: none) {
+  .ticket-tab:hover {
+    background: var(--color-bg);
   }
 }

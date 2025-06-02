@@ -28,6 +28,7 @@ import SlaRules from './pages/SlarRules/SlaRules';
 import NewSlaRule from './pages/NewSlaRule/NewSlaRule';
 import WorkflowAdmin from './pages/WorkflowAdmin/WorkflowAdmin';
 import RequestTypeConfigurator from './pages/RequestTypeConfigurator/RequestTypeConfigurator';
+import MyTicketsCalendar from './pages/MyTicketsCalendar/MyTicketsCalendar';
 
 
 const AppRoutes = () => {
@@ -49,6 +50,7 @@ const AppRoutes = () => {
 
         {/* Tickets */}
         <Route path="/ticket/:id" element={<TicketDetails />} />
+        <Route  path="/my-tickets/calendar"  element={<MyTicketsCalendar />} />
         <Route path="/my-tickets" element={<MyTickets />} />
         <Route path="/all-tickets" element={<AllTickets />} />
         <Route path="/open-tickets" element={<OpenTickets />} />

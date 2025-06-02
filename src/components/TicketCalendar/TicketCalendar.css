@@ -1,0 +1,260 @@
+/* =========================
+   Base Calendar Styling (Light Theme)
+   ========================= */
+
+.rbc-btn-group:first-child {
+  display: none !important;
+}
+
+.rbc-toolbar-label {
+  text-align: right !important;
+  padding: 0px 15px !important;
+}
+
+.rbc-btn-group:last-child {
+  font-size: 13px !important;
+}
+
+.rbc-btn-group:last-child button {
+  border: none !important;
+  background-color: #f1f0ff !important;
+  margin-left: 4px !important;
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  min-height: 32px;
+  font-size: 0.875rem;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #dbdafe !important;
+  box-shadow: none !important;
+}
+
+.rbc-time-view {
+  border-color: #eee !important;
+}
+
+.rbc-event:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+.rbc-time-header {
+  display: none !important;
+}
+
+.rbc-time-content {
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.rbc-time-gutter.rbc-time-column {
+  font-size: 12px !important;
+}
+
+.rbc-time-gutter.rbc-time-column .rbc-timeslot-group {
+  padding: 0px 16px !important;
+}
+
+.rbc-timeslot-group {
+  background-color: #f7fdff !important;
+}
+
+.rbc-day-slot {
+  font-size: 14px !important;
+}
+
+/* Event Styling */
+.rbc-event {
+  color: black !important;
+  padding: 6px 8px !important;
+  margin: 6px 8px !important;
+  width: 95% !important;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.rbc-day-slot .rbc-event{
+  border: 1px solid var(--color-border-light) !important;
+}
+
+.rbc-event-label {
+  color: gray !important;
+  margin-bottom: 3px;
+}
+
+
+/* Make clickable event block not feel cut off */
+.rbc-event-content:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+/* =========================
+   Dark Theme Overrides
+   ========================= */
+
+.dark .rbc-time-view,
+.dark .rbc-timeslot-group,
+.dark .rbc-day-slot {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+}
+
+.dark .rbc-time-gutter {
+  background-color: var(--color-surface) !important;
+  color: var(--color-muted) !important;
+  border-right: 1px solid var(--color-border-light) !important;
+}
+
+.dark .rbc-time-gutter.rbc-time-column .rbc-timeslot-group {
+  background: transparent !important;
+}
+
+.dark .rbc-event {
+  border: none !important;
+  color: var(--color-text) !important;
+}
+
+/* ========== Ticket Event Content ========== */
+
+/* Main container styling */
+.rbc-event-content{
+  display: flex !important;
+  gap: 1rem;
+}
+
+
+/* Title: Ticket ID + Status */
+.rbc-event-content strong {
+color: var(--color-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+
+/* Description / Subject */
+.rbc-event-content div {
+  color: var(--color-light);
+  font-size: 0.7rem;
+  line-height: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;    
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+/* Remove hover effects */
+.rbc-event-content:hover {
+  text-decoration: none !important;
+  cursor: default !important;
+}
+
+
+
+.dark .rbc-toolbar {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.dark .rbc-toolbar button {
+  background-color: transparent !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border-light);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  min-height: 32px;
+  font-size: 0.875rem;
+}
+
+.dark .rbc-toolbar button.rbc-active {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-color: var(--color-primary);
+}
+
+/* Hover feedback */
+.rbc-toolbar button:hover {
+  filter: brightness(0.95);
+}
+
+.dark .rbc-toolbar button:hover {
+  background-color: var(--color-border-light);
+}
+
+
+/* =========================
+   Grid & Border Refinements
+   ========================= */
+
+/* Lighten calendar grid borders in dark mode */
+.dark .rbc-time-view,
+.dark .rbc-time-header-cell,
+.dark .rbc-day-bg,
+.dark .rbc-timeslot-group,
+.dark .rbc-day-slot {
+  border-color: var(--color-border-light) !important;
+}
+
+.dark .rbc-time-content {
+  border-top: 1px solid var(--color-border-light) !important;
+}
+
+
+
+.dark .rbc-time-gutter,
+.dark .rbc-time-gutter .rbc-timeslot-group {
+  border-color: var(--color-border-light) !important;
+}
+
+.dark .rbc-time-view .rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid var(--color-border-light) !important;
+}
+
+.dark .rbc-time-content > * + * > * {
+  border-left: 1px solid var(--color-border-light) !important;
+}
+
+/* Inner slot lines */
+.dark .rbc-timeslot-group {
+  border-bottom: 1px solid var(--color-border-light) !important;
+}
+
+.dark .rbc-day-slot .rbc-time-slot {
+  border-top: 1px solid var(--color-border-light) !important;
+}
+
+.dark .rbc-day-slot .rbc-time-slot + .rbc-time-slot {
+  border-top: 1px solid var(--color-border-light) !important;
+}
+
+.dark .rbc-time-gutter .rbc-time-slot:first-child {
+  border-top: none !important;
+}
+
+/* Improve label/text contrast inside events */
+.dark .rbc-event-label {
+  color: #000 !important;
+}
+
+.dark .rbc-day-slot .rbc-event-content {
+  color: #000 !important;
+}
+
+
+.dark .rbc-event-content strong {
+color: rgb(56, 56, 56) !important;
+}
+
+
+/* Description / Subject */
+.dark .rbc-event-content div {
+  color: rgb(56, 56, 56) !important;
+}
+.dark .rbc-day-slot .rbc-event{
+  border: 1px solid rgb(196, 196, 196) !important;
+}

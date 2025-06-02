@@ -159,9 +159,9 @@ const RequestTypeConfigurator = () => {
   return (
     <div className="container">
       <div className="configurator-header">
-        <h2 className="configurator-title">Request Type Configurator</h2>
+        <h2 className="configurator-title">Service Request Flows</h2>
         <button className="btn" onClick={() => setShowModal(true)}>
-          + Add Mapping
+          + Add Request Flow
         </button>
       </div>
 
@@ -210,7 +210,7 @@ const RequestTypeConfigurator = () => {
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-            <h3>Add New Mapping</h3>
+            <h3>Add Request Flow</h3>
 
             <div className="modal-group">
               <label>Issue Type</label>

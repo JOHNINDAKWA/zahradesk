@@ -77,3 +77,81 @@
   color: var(--color-primary-hover);
   text-decoration: underline;
 }
+.edit-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.workflow-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Input field override for edit mode */
+.input-field {
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.dark .input-field {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border: 1px solid #374151;
+}
+
+/* Action buttons for editing */
+.workflow-edit-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #111827;
+  border: none;
+  padding: 6px 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dark .btn-secondary {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+.workflow-sidebar-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
