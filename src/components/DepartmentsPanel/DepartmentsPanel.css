@@ -1,0 +1,149 @@
+.departments-panel {
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.departments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.dept-add-btn {
+  padding: 6px 12px;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  border: none;
+}
+
+.departments-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.dept-card {
+  background: var(--color-section-right);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  transition: 0.2s ease all;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dept-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.dept-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--color-text-title);
+  font-size: 1rem;
+}
+
+.dept-card p {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin: 0.25rem 0;
+}
+
+.dept-card p span {
+  font-weight: 600;
+  color: var(--color-light);
+}
+
+.dept-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 24, 39, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.dept-modal {
+  background: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 400px;
+}
+
+.dept-modal input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.departments-panel .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: 1rem;
+}
+
+.departments-panel .btn-primary {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.departments-panel .btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.dept-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.departments-panel .edit-btn,
+.departments-panel .delete-btn {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+}
+
+.departments-panel .edit-btn {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.departments-panel .delete-btn {
+  background-color: #f87171;
+  color: white;
+}

@@ -13,7 +13,7 @@ const closedTicketsData = [
     category: 'Billing',
     group: 'Finance',
     tags: ['Refund', 'Billing'],
-    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
+    createdAt: '3 days ago',
     responded: 'Responded',
   },
   {
@@ -25,7 +25,7 @@ const closedTicketsData = [
     category: 'Support',
     group: 'Customer Care',
     tags: ['Login', 'Security'],
-    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), 
+    createdAt: '3 days ago',
     responded: 'Resolved',
   },
   {

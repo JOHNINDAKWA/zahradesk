@@ -3,7 +3,10 @@ import './UserManagement.css';
 import UserDetail from './../../components/UserDetails/UserDetails';
 import UserList from './../../components/UserList/UserList';
 
-// Example data
+// You will create these next
+import TeamsPanel from './../../components/TeamsPanel/TeamsPanel';
+import DepartmentsPanel from './../../components/DepartmentsPanel/DepartmentsPanel';
+
 const sampleUsers = [
   {
     id: 1,
@@ -330,25 +333,56 @@ const sampleUsers = [
   },
 ];
 
-
 const UserManagement = () => {
+  const [selectedTab, setSelectedTab] = useState('users');
   const [selectedUser, setSelectedUser] = useState(null);
 
-  const handleSelectUser = (user) => {
-    setSelectedUser(user);
-  };
+  const handleSelectUser = (user) => setSelectedUser(user);
 
   return (
     <div className="user-management-page">
+      <div className="tabs">
+        <button
+          className={selectedTab === 'users' ? 'active' : ''}
+          onClick={() => setSelectedTab('users')}
+        >
+          Users
+        </button>
+        <button
+          className={selectedTab === 'teams' ? 'active' : ''}
+          onClick={() => setSelectedTab('teams')}
+        >
+          Teams
+        </button>
+        <button
+          className={selectedTab === 'departments' ? 'active' : ''}
+          onClick={() => setSelectedTab('departments')}
+        >
+          Departments
+        </button>
+      </div>
+
       <div className="user-management-grid">
-        <UserList users={sampleUsers} onSelect={handleSelectUser} selectedUser={selectedUser} />
-        {selectedUser ? (
-          <UserDetail user={selectedUser} />
-        ) : (
-          <div className="user-details-placeholder">
-            <p>Select a user to view their details</p>
-          </div>
+        {selectedTab === 'users' && (
+          <>
+            <UserList
+              users={sampleUsers}
+              onSelect={handleSelectUser}
+              selectedUser={selectedUser}
+            />
+            {selectedUser ? (
+              <UserDetail user={selectedUser} />
+            ) : (
+              <div className="user-details-placeholder">
+                <p>Select a user to view their details</p>
+              </div>
+            )}
+          </>
         )}
+
+        {selectedTab === 'teams' && <TeamsPanel />}
+
+        {selectedTab === 'departments' && <DepartmentsPanel />}
       </div>
     </div>
   );
