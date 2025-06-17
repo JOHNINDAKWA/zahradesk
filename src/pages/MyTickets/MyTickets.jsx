@@ -3,6 +3,7 @@ import "./MyTickets.css";
 import TicketFilter from "../../components/TicketFilter/TicketFilter";
 import TicketList from "../../components/MyTickets/TicketList/TicketList";
 import { Link } from "react-router-dom";
+import { FiFilter } from "react-icons/fi"; // Import filter icon
 
 const sampleTickets = [
   {
@@ -77,6 +78,7 @@ const sampleTickets = [
 
 const MyTickets = () => {
   const [selectedTickets, setSelectedTickets] = useState([]);
+  const [showFilter, setShowFilter] = useState(false); // New state for filter visibility
 
   return (
     <div className="my-tickets-container">
@@ -87,6 +89,13 @@ const MyTickets = () => {
           <Link to="/my-tickets/calendar" className="ticket-tab">
             Calendar View
           </Link>
+          {/* New filter toggle button for small screens */}
+          <button
+            className="ticket-tab filter-toggle-button" // Add a class for styling
+            onClick={() => setShowFilter(!showFilter)}
+          >
+            <FiFilter /> Filter
+          </button>
         </div>
       </div>
 
@@ -98,8 +107,9 @@ const MyTickets = () => {
             setSelectedTickets={setSelectedTickets}
           />
         </div>
-        <div className="ticket-filter-panel">
-          <TicketFilter />
+        {/* Render TicketFilter only if showFilter is true or on large screens */}
+        <div className={`ticket-filter-panel ${showFilter ? 'visible' : 'hidden'}`}>
+          <TicketFilter onClose={() => setShowFilter(false)} /> {/* Pass onClose prop */}
         </div>
       </div>
     </div>
