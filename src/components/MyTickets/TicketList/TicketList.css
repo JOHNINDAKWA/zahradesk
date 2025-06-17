@@ -71,3 +71,64 @@
 .export-btn:hover {
   color: var(--color-primary-hover);
 }
+
+/* Media Queries for TicketList */
+
+/* Small screens (less than 600px) */
+@media (max-width: 600px) {
+    .ticket-list-wrapper {
+        padding: var(--space-sm);
+    }
+    .ticket-actions-bar {
+        justify-content: center; /* Center actions if they wrap */
+        padding: 0.5rem; /* More padding for wrapped buttons */
+        gap: 10px; /* Reduce gap between buttons */
+    }
+    .ticket-actions-bar button {
+        padding: 5px 8px; /* Smaller button padding */
+        font-size: 0.75rem; /* Smaller font size */
+    }
+    .action-divider {
+        display: none; /* Hide divider if buttons are wrapping extensively */
+    }
+    .export-btn {
+        margin-left: unset; /* Remove auto margin to allow centering */
+        width: 100%; /* Make export button full width if needed */
+        justify-content: center; /* Center text within export button */
+        margin-top: 0.5rem; /* Add space if it's on a new line */
+    }
+}
+
+/* Medium screens (tablets, small laptops) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .ticket-list-wrapper {
+        padding: 1rem;
+    }
+    .ticket-actions-bar {
+        gap: 12px; /* Slightly reduced gap */
+        padding: 0.75rem 0.5rem;
+    }
+    .ticket-actions-bar button {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    .action-divider {
+        height: 20px; /* Slightly smaller divider */
+        margin: 0 8px;
+    }
+}
+
+/* Large desktops (adjust spacing/size if desired) */
+@media (min-width: 1201px) {
+    .ticket-list-wrapper {
+        padding: 1.5rem;
+    }
+    .ticket-actions-bar {
+        gap: 20px; /* More space between actions */
+        padding: 0.75rem 0;
+    }
+    .ticket-actions-bar button {
+        font-size: 0.9rem; /* Slightly larger buttons */
+        padding: 8px 12px;
+    }
+}
