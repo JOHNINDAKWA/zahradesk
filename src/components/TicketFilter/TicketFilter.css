@@ -1,12 +1,19 @@
 /* TicketFilter.css */
 
 .filter-panel {
-    padding: 1rem; /* Base padding */
+    /* Base padding, overridden by MyTickets.css when fixed, then restored */
     background-color: var(--color-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md); /* Overridden by MyTickets.css when fixed */
+    box-shadow: var(--shadow-sm); /* Overridden by MyTickets.css when fixed */
     width: 100%;
     max-width: 340px; /* Default for larger screens */
+
+    /* Ensure content scrolls internally if filter is long */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Enable scrolling for the filter content */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    padding: 1.5rem; /* Consistent padding for the filter panel */
 }
 
 .filter-panel-header { /* New styles for filter header */
@@ -14,6 +21,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    flex-shrink: 0; /* Prevent header from shrinking when content scrolls */
 }
 
 .close-filter-btn { /* Style for the close button */
@@ -23,7 +31,7 @@
     color: var(--color-muted);
     cursor: pointer;
     padding: 0;
-    display: none; /* Hidden by default, show on small screens */
+    display: none; /* Hidden by default, shown via media query */
 }
 
 .close-filter-btn:hover {
@@ -34,6 +42,7 @@
     font-size: 1rem;
     font-weight: 600;
     /* margin-bottom: 1rem; Removed as it's now in header */
+    flex-shrink: 0; /* Prevent title from shrinking */
 }
 
 .search-input {
@@ -44,6 +53,7 @@
     border: 1px solid var(--color-border-light);
     font-size: 0.85rem;
     outline: none;
+    flex-shrink: 0; /* Prevent input from shrinking */
 }
 
 .search-input:focus {
@@ -53,6 +63,7 @@
 
 .filter-group {
     margin-bottom: 1rem;
+    flex-shrink: 0; /* Prevent filter groups from shrinking */
 }
 
 .filter-group label {
@@ -77,6 +88,8 @@
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background-color 0.2s ease;
+    margin-top: auto; /* Pushes the button to the bottom if space allows */
+    flex-shrink: 0; /* Prevent button from shrinking */
 }
 
 .btn:hover {
@@ -85,23 +98,24 @@
 
 /* Media Queries for TicketFilter */
 
-/* Small screens (less than 900px) */
+/* Small screens (less than 901px) */
 @media (max-width: 900px) {
     .filter-panel {
-        /* On small screens, this panel is fixed and controlled by JS */
-        /* Its visual properties are defined in MyTickets.css for fixed positioning */
-        border-radius: 0; /* No border-radius for full-height panel */
-        box-shadow: none; /* Shadow handled by MyTickets.css fixed panel */
+        /* When fixed as an overlay (controlled by MyTickets.css), */
+        /* it should not have a border-radius or internal box-shadow */
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1.5rem; /* Ensure padding is set here for the fixed panel */
     }
 
     .close-filter-btn {
-        display: block; /* Show the close button */
+        display: block; /* Show the close button for the overlay */
     }
 
     .filter-panel-header {
         margin-bottom: 1.5rem; /* More space for header */
         padding-bottom: 0.75rem; /* Add padding to bottom */
-        border-bottom: 1px solid var(--color-border-light); /* Separator */
+        border-bottom: 1px solid var(--color-border-light); /* Separator line */
     }
     .filter-title {
         font-size: 1.2rem; /* Larger title for filter panel */
@@ -109,11 +123,12 @@
 }
 
 
-/* Desktops and larger laptops (original sidebar behavior) */
+/* Desktops and larger laptops (>= 901px) */
 @media (min-width: 901px) {
     .filter-panel {
-        border-radius: var(--radius-md); /* Restore border-radius */
-        box-shadow: var(--shadow-sm); /* Restore shadow */
+        border-radius: var(--radius-md); /* Restore border-radius for sidebar */
+        box-shadow: var(--shadow-sm); /* Restore shadow for sidebar */
+        padding: 1rem; /* Restore original padding for sidebar */
     }
     .close-filter-btn {
         display: none; /* Hide close button on larger screens */
