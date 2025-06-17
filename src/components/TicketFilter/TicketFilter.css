@@ -58,3 +58,46 @@
 .apply-btn:hover {
   background-color: #6c4bd4;
 }
+
+
+/* Media Queries for TicketFilter */
+
+/* Small screens (less than 600px) - mostly handled by base styles */
+@media (max-width: 600px) {
+    .filter-panel {
+        padding: var(--space-sm);
+        margin-bottom: var(--space-sm); /* Add some space when stacked */
+    }
+    .filter-title {
+        font-size: 1.1rem; /* Slightly larger title for readability */
+    }
+}
+
+/* Medium screens (tablets, small laptops) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .filter-panel {
+        padding: 1.2rem;
+        margin-bottom: var(--space-md); /* More space when stacked */
+    }
+    .filter-group {
+        margin-bottom: 1.2rem; /* Slightly more spacing */
+    }
+}
+
+/* Desktops and larger laptops */
+@media (min-width: 901px) {
+    .filter-panel {
+        max-width: 340px; /* Restore original max-width on larger screens */
+        padding: 1rem;
+    }
+}
+
+/* Large desktops */
+@media (min-width: 1201px) {
+    .filter-panel {
+        padding: 1.5rem; /* More generous padding */
+    }
+    .filter-title {
+        font-size: 1.2rem;
+    }
+}
