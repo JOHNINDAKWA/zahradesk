@@ -1,103 +1,130 @@
+/* TicketFilter.css */
+
 .filter-panel {
-  padding: 1rem;
-  background-color: var(--color-surface);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  width: 100%;
-  max-width: 340px;
+    padding: 1rem; /* Base padding */
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    max-width: 340px; /* Default for larger screens */
+}
+
+.filter-panel-header { /* New styles for filter header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.close-filter-btn { /* Style for the close button */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-muted);
+    cursor: pointer;
+    padding: 0;
+    display: none; /* Hidden by default, show on small screens */
+}
+
+.close-filter-btn:hover {
+    color: var(--color-text);
 }
 
 .filter-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    /* margin-bottom: 1rem; Removed as it's now in header */
 }
 
 .search-input {
-  width: 100%;
-  padding: 8px 12px;
-  margin-bottom: 1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-light);
-  font-size: 0.85rem;
-  outline: none;
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-light);
+    font-size: 0.85rem;
+    outline: none;
 }
 
-.search-input:focus{
-   border: 1px solid var(--color-border-light);
-   color: var(--color-muted);
+.search-input:focus {
+    border: 1px solid var(--color-border-light);
+    color: var(--color-muted);
 }
 
 .filter-group {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .filter-group label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: var(--color-text);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--color-text);
 }
 
 .filter-select {
-  font-size: 0.85rem;
+    font-size: 0.85rem;
 }
 
-.apply-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #805ef0;
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #805ef0;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.apply-btn:hover {
-  background-color: #6c4bd4;
+.btn:hover {
+    background-color: #6c4bd4;
 }
-
 
 /* Media Queries for TicketFilter */
 
-/* Small screens (less than 600px) - mostly handled by base styles */
-@media (max-width: 600px) {
+/* Small screens (less than 900px) */
+@media (max-width: 900px) {
     .filter-panel {
-        padding: var(--space-sm);
-        margin-bottom: var(--space-sm); /* Add some space when stacked */
+        /* On small screens, this panel is fixed and controlled by JS */
+        /* Its visual properties are defined in MyTickets.css for fixed positioning */
+        border-radius: 0; /* No border-radius for full-height panel */
+        box-shadow: none; /* Shadow handled by MyTickets.css fixed panel */
+    }
+
+    .close-filter-btn {
+        display: block; /* Show the close button */
+    }
+
+    .filter-panel-header {
+        margin-bottom: 1.5rem; /* More space for header */
+        padding-bottom: 0.75rem; /* Add padding to bottom */
+        border-bottom: 1px solid var(--color-border-light); /* Separator */
     }
     .filter-title {
-        font-size: 1.1rem; /* Slightly larger title for readability */
+        font-size: 1.2rem; /* Larger title for filter panel */
     }
 }
 
-/* Medium screens (tablets, small laptops) */
-@media (min-width: 601px) and (max-width: 900px) {
-    .filter-panel {
-        padding: 1.2rem;
-        margin-bottom: var(--space-md); /* More space when stacked */
-    }
-    .filter-group {
-        margin-bottom: 1.2rem; /* Slightly more spacing */
-    }
-}
 
-/* Desktops and larger laptops */
+/* Desktops and larger laptops (original sidebar behavior) */
 @media (min-width: 901px) {
     .filter-panel {
-        max-width: 340px; /* Restore original max-width on larger screens */
-        padding: 1rem;
+        border-radius: var(--radius-md); /* Restore border-radius */
+        box-shadow: var(--shadow-sm); /* Restore shadow */
     }
-}
-
-/* Large desktops */
-@media (min-width: 1201px) {
-    .filter-panel {
-        padding: 1.5rem; /* More generous padding */
+    .close-filter-btn {
+        display: none; /* Hide close button on larger screens */
+    }
+    .filter-panel-header {
+        justify-content: flex-start; /* Align title to start */
+        margin-bottom: 1rem; /* Original margin */
+        padding-bottom: 0; /* Remove padding */
+        border-bottom: none; /* Remove separator */
     }
     .filter-title {
-        font-size: 1.2rem;
+        font-size: 1rem; /* Original title size */
     }
 }
