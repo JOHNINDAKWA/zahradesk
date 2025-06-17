@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import './TicketFilter.css';
+import { FiX } from 'react-icons/fi'; 
 
 const customStyles = {
   control: (provided, state) => ({
