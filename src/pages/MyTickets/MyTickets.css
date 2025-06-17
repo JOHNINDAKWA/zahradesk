@@ -1,138 +1,214 @@
+/* MyTickets.css */
+
 /* === Layout === */
 .my-tickets-container {
-  padding: var(--space-sm);
-  height: calc(100vh - var(--space-md) - 1.5rem); /* full height minus title & padding */
-  display: flex;
-  flex-direction: column;
+    padding: var(--space-sm);
+    height: calc(100vh - var(--space-md) - 1.5rem);
+    display: flex;
+    flex-direction: column;
 }
 
+/* Base styles for .page-title and .mytickets-header are good. */
 .page-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
 }
 
-.mytickets-header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 0.5rem;
+.mytickets-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
 }
+
 /* === Toggle Tabs (List / Calendar) === */
 .ticket-tab-bar {
-  display: flex;
-  gap: var(--space-sm);
-  margin-top: var(--space-sm);
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
 }
 
 .ticket-tab {
-  padding: 6px 12px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-surface);
-  color: var(--color-muted);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
-  border: 1px solid var(--color-border-light);
-  text-decoration: none;
-  margin: 0 !important;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    color: var(--color-muted);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-border-light);
+    text-decoration: none;
+    margin: 0 !important;
 }
 
 .ticket-tab:hover {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  box-shadow: var(--shadow-md);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    box-shadow: var(--shadow-md);
 }
 
 .ticket-tab.active {
-  background-color: var(--color-primary);
-  color: #fff;
-  border: 1px solid var(--color-primary);
-  box-shadow: var(--shadow-md);
-  pointer-events: none;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: 1px solid var(--color-primary);
+    box-shadow: var(--shadow-md);
+    pointer-events: none;
 }
 
-
 /* === Ticket Grid Layout === */
+/* Mobile-first: Single column by default */
 .ticket-page-layout {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  gap: var(--space-sm);
-  align-items: start;
-  flex-grow: 1;
-  min-height: 0; /* important for scroll */
-  overflow: hidden;
+    display: flex; /* Changed to flex for better control on small screens */
+    flex-direction: column; /* Stack filter above list on small screens */
+    gap: var(--space-sm);
+    flex-grow: 1;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .ticket-list-panel {
-  height: 100%;
-  overflow-y: auto;
-  padding-right: 0.5rem; /* space for scrollbar */
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0.5rem;
 }
 
 .ticket-filter-panel {
-  overflow: visible; /* non-scrollable */
+    overflow: visible;
+    /* On small screens, filter might be above or below,
+       order is handled in media queries */
 }
+
+/* === Responsive Fallback for Narrow Screens (Your original, adapted) === */
+@media (max-width: 900px) {
+    .ticket-page-layout {
+        /* This media query covers phones and tablets */
+        grid-template-columns: 1fr; /* Keep single column for smaller devices */
+        display: flex; /* Ensure flexbox for better ordering */
+        flex-direction: column;
+    }
+
+    .ticket-filter-panel {
+        order: -1; /* Place filter above the ticket list on smaller screens */
+        max-width: 100%; /* Allow filter to take full width */
+    }
+
+    .my-tickets-container {
+        padding: var(--space-xs); /* Reduce padding on very small screens */
+    }
+
+    .mytickets-header {
+        flex-direction: column; /* Stack header elements on very small screens */
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+
+    .page-title {
+        margin-bottom: var(--space-xs);
+    }
+
+    .ticket-tab-bar {
+        width: 100%;
+        justify-content: center; /* Center tabs on small screens */
+        margin-top: 0;
+    }
+
+    .ticket-tab {
+        flex: 1; /* Make tabs fill available width */
+        text-align: center;
+        font-size: 0.8rem;
+        padding: 8px 6px; /* Adjust padding for smaller tabs */
+    }
+}
+
+/* Medium screens (Tablets, small laptops) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .ticket-page-layout {
+        /* Still single column but allow for slightly larger filter area */
+        display: grid; /* Use grid for better alignment within the column */
+        grid-template-columns: 1fr;
+    }
+
+    .ticket-filter-panel {
+        order: -1; /* Filter still comes first */
+    }
+}
+
+
+/* Desktops and larger laptops (original layout) */
+@media (min-width: 901px) {
+    .ticket-page-layout {
+        grid-template-columns: 4fr 1fr; /* Restore original grid layout */
+        align-items: start;
+        flex-direction: unset; /* Revert flex direction */
+    }
+
+    .ticket-filter-panel {
+        order: unset; /* Revert order */
+        max-width: unset; /* Remove max-width restriction */
+    }
+}
+
+/* Large desktops */
+@media (min-width: 1201px) {
+    .my-tickets-container {
+        padding: var(--space-md); /* Increase overall padding for larger screens */
+    }
+    .page-title {
+        font-size: 1.8rem; /* Slightly larger title */
+    }
+}
+
 
 /* === Calendar View Wrapper === */
 .ticket-calendar-wrapper {
-  height: 100%;
-  padding-right: 0.5rem;
+    height: 100%;
+    padding-right: 0.5rem;
 }
 
 .ticket-calendar-view {
-  flex-grow: 1;
-  height: 100%;
-  background: white;
-  border: 1px solid var(--color-border-light);
-  border-radius: 6px;
-  padding: 0.5rem;
-  overflow: hidden;
+    flex-grow: 1;
+    height: 100%;
+    background: white;
+    border: 1px solid var(--color-border-light);
+    border-radius: 6px;
+    padding: 0.5rem;
+    overflow: hidden;
 }
 
 .ticket-calendar-view .rbc-calendar {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 /* === Miscellaneous Details Area (used elsewhere) === */
 .ticket-details-area {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column-reverse; /* Reverses order on small screens */
+    gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
-  .ticket-details-area {
-    flex-direction: row;
-  }
+    .ticket-details-area {
+        flex-direction: row; /* Horizontal layout for larger screens */
+    }
 
-  .ticket-sidebar-panel {
-    width: 300px;
-  }
+    .ticket-sidebar-panel {
+        width: 300px;
+    }
 
-  .ticket-conversation-panel {
-    flex: 1;
-  }
+    .ticket-conversation-panel {
+        flex: 1;
+    }
 }
 
-/* === Responsive Fallback for Narrow Screens === */
-@media (max-width: 900px) {
-  .ticket-page-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .ticket-filter-panel {
-    order: -1;
-  }
-}
 
 /* Optional: Prevent hover on mobile */
 @media (hover: none) {
-  .ticket-tab:hover {
-    background: var(--color-bg);
-  }
+    .ticket-tab:hover {
+        background: var(--color-bg);
+    }
 }
