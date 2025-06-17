@@ -4,7 +4,6 @@ import './TicketFilter.css';
 import { FiX } from 'react-icons/fi'; // Import close icon
 
 const customStyles = {
-    // ... (your existing customStyles remain the same) ...
     control: (provided, state) => ({
         ...provided,
         backgroundColor: 'var(--color-surface)',
@@ -129,7 +128,7 @@ const options = {
 };
 
 
-// CORRECTED: Receive onClose prop here
+// Corrected: Receive onClose prop here
 const TicketFilter = ({ onClose }) => {
     const [owner, setOwner] = useState([]);
     const [assignedTo, setAssignedTo] = useState([]);
@@ -137,7 +136,7 @@ const TicketFilter = ({ onClose }) => {
     const [priority, setPriority] = useState([]);
     const [category, setCategory] = useState([]);
     const [tags, setTags] = useState([]);
-    // const [group, setGroup] = useState([]); // This was commented out in your original
+    // const [group, setGroup] = useState([]);
     const [resolutionDueBy, setResolutionDueBy] = useState(null);
 
     const handleApplyFilter = () => {
@@ -145,14 +144,14 @@ const TicketFilter = ({ onClose }) => {
         console.log("Applying filters:", {
             owner, assignedTo, status, priority, category, tags, resolutionDueBy
         });
-        if (onClose) { // Check if onClose prop exists before calling
+        if (onClose) {
             onClose(); // Call the onClose function passed from MyTickets.js
         }
     };
 
     return (
         <div className="filter-panel">
-            {/* CORRECTED: Added filter-panel-header with title and close button */}
+            {/* New header for close button */}
             <div className="filter-panel-header">
                 <h4 className="filter-title">Filter</h4>
                 <button className="close-filter-btn" onClick={onClose}>
@@ -233,7 +232,6 @@ const TicketFilter = ({ onClose }) => {
                 />
             </div>
 
-            {/* If you intend to use 'group' later, uncomment and manage its state */}
             {/* <div className="filter-group">
                 <label>Group</label>
                 <Select
@@ -258,7 +256,6 @@ const TicketFilter = ({ onClose }) => {
                 />
             </div>
 
-            {/* CORRECTED: Added onClick handler to the Apply Filter button */}
             <button className="btn" onClick={handleApplyFilter}>Apply Filter</button>
         </div>
     );
