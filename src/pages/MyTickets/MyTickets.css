@@ -22,6 +22,7 @@
     justify-content: space-between;
     gap: 2rem;
     margin-bottom: 0.5rem;
+    position: relative; /* Needed for absolute positioning of filter */
 }
 
 /* === Toggle Tabs (List / Calendar) === */
@@ -59,11 +60,25 @@
     pointer-events: none;
 }
 
+/* New: Filter toggle button */
+.filter-toggle-button {
+    display: none; /* Hidden by default, show on small screens */
+    margin-left: auto; /* Push to the right */
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+.filter-toggle-button:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: #fff;
+}
+
+
 /* === Ticket Grid Layout === */
-/* Mobile-first: Single column by default */
 .ticket-page-layout {
-    display: flex; /* Changed to flex for better control on small screens */
-    flex-direction: column; /* Stack filter above list on small screens */
+    display: flex;
+    flex-direction: column;
     gap: var(--space-sm);
     flex-grow: 1;
     min-height: 0;
@@ -78,62 +93,109 @@
 
 .ticket-filter-panel {
     overflow: visible;
-    /* On small screens, filter might be above or below,
-       order is handled in media queries */
+    /* Styles for positioning on small screens */
+    position: fixed; /* Fixed position for overlay effect */
+    top: 0; /* Align to top of viewport */
+    right: 0; /* Align to right of viewport */
+    width: 100%; /* Take full width on small screens */
+    max-width: 320px; /* Max width for the filter panel */
+    height: 100%; /* Full height of viewport */
+    background-color: var(--color-surface); /* Background to cover content */
+    z-index: 1000; /* High z-index to be on top */
+    transform: translateX(100%); /* Start off-screen to the right */
+    transition: transform 0.3s ease-out; /* Smooth transition for sliding */
+    box-shadow: var(--shadow-lg); /* Add a strong shadow */
+    padding: 1.5rem; /* Padding inside the filter panel */
+    display: flex; /* Flex container for content */
+    flex-direction: column; /* Stack filter groups */
 }
 
-/* === Responsive Fallback for Narrow Screens (Your original, adapted) === */
+/* Visibility states for the filter panel */
+.ticket-filter-panel.hidden {
+    transform: translateX(100%);
+}
+.ticket-filter-panel.visible {
+    transform: translateX(0); /* Slide into view */
+}
+
+
+/* Overlay background when filter is open */
+.ticket-page-layout::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+}
+
+.ticket-filter-panel.visible ~ .ticket-list-panel + .ticket-page-layout::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* === Responsive Fallback for Narrow Screens === */
 @media (max-width: 900px) {
     .ticket-page-layout {
-        /* This media query covers phones and tablets */
-        grid-template-columns: 1fr; /* Keep single column for smaller devices */
-        display: flex; /* Ensure flexbox for better ordering */
+        grid-template-columns: 1fr;
+        display: flex;
         flex-direction: column;
     }
 
     .ticket-filter-panel {
-        order: -1; /* Place filter above the ticket list on smaller screens */
-        max-width: 100%; /* Allow filter to take full width */
+        order: unset; /* Remove order on small screens as it's fixed */
+        /* The fixed positioning and transform handle its display now */
     }
 
     .my-tickets-container {
-        padding: var(--space-xs); /* Reduce padding on very small screens */
+        padding: var(--space-xs);
     }
 
     .mytickets-header {
-        flex-direction: column; /* Stack header elements on very small screens */
-        align-items: flex-start;
+        flex-direction: row; /* Keep header items in a row if possible */
+        align-items: center;
         gap: var(--space-sm);
+        justify-content: space-between; /* Space between title and tabs/button */
     }
 
     .page-title {
         margin-bottom: var(--space-xs);
+        flex-shrink: 0;
     }
 
     .ticket-tab-bar {
-        width: 100%;
-        justify-content: center; /* Center tabs on small screens */
+        width: auto; /* Allow tabs to size based on content */
+        justify-content: flex-end; /* Push tabs/filter button to the right */
         margin-top: 0;
+        gap: 0.5rem; /* Reduce gap between tabs on small screens */
+        flex-grow: 1; /* Allow tab bar to grow and push filter button */
     }
 
     .ticket-tab {
-        flex: 1; /* Make tabs fill available width */
+        flex: unset; /* Don't force tabs to fill width */
         text-align: center;
         font-size: 0.8rem;
-        padding: 8px 6px; /* Adjust padding for smaller tabs */
+        padding: 8px 6px;
+    }
+
+    /* Show the filter toggle button on small screens */
+    .filter-toggle-button {
+        display: flex; /* Show the button */
     }
 }
 
 /* Medium screens (Tablets, small laptops) */
 @media (min-width: 601px) and (max-width: 900px) {
-    .ticket-page-layout {
-        /* Still single column but allow for slightly larger filter area */
-        display: grid; /* Use grid for better alignment within the column */
-        grid-template-columns: 1fr;
-    }
-
+    /* For these screens, the filter will still be an overlay */
     .ticket-filter-panel {
-        order: -1; /* Filter still comes first */
+        max-width: 380px; /* Slightly wider overlay */
+        padding: 2rem;
     }
 }
 
@@ -141,24 +203,44 @@
 /* Desktops and larger laptops (original layout) */
 @media (min-width: 901px) {
     .ticket-page-layout {
-        grid-template-columns: 4fr 1fr; /* Restore original grid layout */
+        grid-template-columns: 4fr 1fr;
         align-items: start;
-        flex-direction: unset; /* Revert flex direction */
+        flex-direction: unset;
     }
 
     .ticket-filter-panel {
+        position: static; /* Revert to static position */
+        transform: translateX(0); /* Ensure it's in view */
+        width: 100%; /* Take full width of its grid column */
+        max-width: 340px; /* Your original max-width */
+        height: auto; /* Auto height */
+        box-shadow: var(--shadow-sm); /* Regular shadow */
+        padding: 1rem; /* Original padding */
+        z-index: auto; /* Revert z-index */
         order: unset; /* Revert order */
-        max-width: unset; /* Remove max-width restriction */
+    }
+
+    /* Hide the filter toggle button on large screens */
+    .filter-toggle-button {
+        display: none;
+    }
+
+    /* Hide the overlay on large screens */
+    .ticket-page-layout::before {
+        display: none;
     }
 }
 
 /* Large desktops */
 @media (min-width: 1201px) {
     .my-tickets-container {
-        padding: var(--space-md); /* Increase overall padding for larger screens */
+        padding: var(--space-md);
     }
     .page-title {
-        font-size: 1.8rem; /* Slightly larger title */
+        font-size: 1.8rem;
+    }
+    .ticket-filter-panel {
+        padding: 1.5rem;
     }
 }
 
@@ -183,32 +265,5 @@
     height: 100% !important;
 }
 
-/* === Miscellaneous Details Area (used elsewhere) === */
-.ticket-details-area {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column-reverse; /* Reverses order on small screens */
-    gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .ticket-details-area {
-        flex-direction: row; /* Horizontal layout for larger screens */
-    }
-
-    .ticket-sidebar-panel {
-        width: 300px;
-    }
-
-    .ticket-conversation-panel {
-        flex: 1;
-    }
-}
-
-
-/* Optional: Prevent hover on mobile */
-@media (hover: none) {
-    .ticket-tab:hover {
-        background: var(--color-bg);
-    }
-}
+/* === Miscellaneous Details Area (used elsewhere) */
+/* ... (no changes needed here from previous version) ... */
