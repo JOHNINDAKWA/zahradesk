@@ -78,7 +78,7 @@ const sampleTickets = [
 
 const MyTickets = () => {
   const [selectedTickets, setSelectedTickets] = useState([]);
-  const [showFilter, setShowFilter] = useState(false); // New state for filter visibility
+  const [showFilter, setShowFilter] = useState(false); // State for filter visibility
 
   return (
     <div className="my-tickets-container">
@@ -89,9 +89,9 @@ const MyTickets = () => {
           <Link to="/my-tickets/calendar" className="ticket-tab">
             Calendar View
           </Link>
-          {/* New filter toggle button for small screens */}
+          {/* Filter toggle button, visible only on small screens via CSS */}
           <button
-            className="ticket-tab filter-toggle-button" // Add a class for styling
+            className="ticket-tab filter-toggle-button"
             onClick={() => setShowFilter(!showFilter)}
           >
             <FiFilter /> Filter
@@ -99,7 +99,8 @@ const MyTickets = () => {
         </div>
       </div>
 
-      <div className="ticket-page-layout">
+      {/* Main page layout */}
+      <div className={`ticket-page-layout ${showFilter ? 'filter-open' : ''}`}>
         <div className="ticket-list-panel">
           <TicketList
             tickets={sampleTickets}
@@ -107,7 +108,7 @@ const MyTickets = () => {
             setSelectedTickets={setSelectedTickets}
           />
         </div>
-        {/* Render TicketFilter only if showFilter is true or on large screens */}
+        {/* The filter panel, which will be an overlay on small screens */}
         <div className={`ticket-filter-panel ${showFilter ? 'visible' : 'hidden'}`}>
           <TicketFilter onClose={() => setShowFilter(false)} /> {/* Pass onClose prop */}
         </div>
