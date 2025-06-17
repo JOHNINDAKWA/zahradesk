@@ -267,3 +267,137 @@
     opacity: 0;
   }
 }
+
+/* Extra small screens (less than 480px) */
+@media (max-width: 480px) {
+    .ti-item-wrapper {
+        padding: 12px;
+        gap: 8px;
+    }
+    .ti-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    .ti-subject-link {
+        font-size: 0.9rem;
+    }
+    .ti-meta {
+        font-size: 0.7rem;
+    }
+    .ti-status-pill {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+    }
+    .ti-quick-view {
+        font-size: 0.7rem;
+    }
+    .ti-details {
+        flex-direction: column; /* Stack details vertically on very small screens */
+        gap: 0.75rem;
+    }
+    .ti-left {
+        width: 100%;
+        flex-direction: row; /* Keep fields in a row, but allow them to wrap */
+        flex-wrap: wrap;
+        gap: 0.75rem; /* Adjust gap for wrapped fields */
+        min-width: unset; /* Remove min-width restriction */
+    }
+    .ti-field {
+        flex-basis: calc(50% - 0.5rem); /* Two fields per row */
+        max-width: calc(50% - 0.5rem);
+    }
+    .ti-tags {
+        width: 100%; /* Tags take full width */
+        margin-top: 0.75rem;
+    }
+    .ti-tag {
+        font-size: 0.6rem;
+        padding: 2px 5px;
+    }
+}
+
+/* Small screens (481px to 768px) - still compact */
+@media (min-width: 481px) and (max-width: 768px) {
+    .ti-item-wrapper {
+        padding: 14px;
+    }
+    .ti-details {
+        flex-direction: column; /* Stack details vertically */
+        gap: 1rem;
+    }
+    .ti-left {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .ti-field {
+        flex-basis: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
+    }
+    .ti-tags {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+/* Medium screens (769px to 900px) - small laptops */
+@media (min-width: 769px) and (max-width: 900px) {
+    .ti-item-wrapper {
+        padding: 16px;
+    }
+    .ti-details {
+        flex-direction: row; /* Horizontal layout for details */
+        gap: 1.5rem;
+    }
+    .ti-left {
+        flex-direction: row; /* Keep fields in a row */
+        flex-wrap: nowrap; /* Prevent wrapping in ti-left on larger screens */
+        gap: 1rem; /* Adjust gap for narrower horizontal space */
+    }
+    .ti-field {
+        flex-basis: auto; /* Revert to auto basis */
+        max-width: unset; /* Remove max-width */
+    }
+    .ti-tags {
+        flex: 1; /* Allow tags to take space */
+        margin-top: 0; /* Align with details */
+    }
+}
+
+/* Desktops and larger laptops (901px and above) - original layout */
+@media (min-width: 901px) {
+    .ti-item-wrapper {
+        padding: 16px;
+        flex-wrap: nowrap; /* Prevent wrapping for the main item wrapper */
+    }
+    .ti-details {
+        flex-direction: row; /* Ensure horizontal layout */
+        align-items: center;
+        gap: 2rem; /* More space for details */
+    }
+    .ti-left {
+        flex-wrap: nowrap; /* Prevent wrapping */
+        gap: 1.4rem; /* Restore original gap */
+    }
+    .ti-field {
+        flex-basis: auto;
+    }
+    .ti-tags {
+        margin-top: 0.5; /* Restore original tag margin */
+    }
+}
+
+/* Optional: Prevent hover on mobile */
+@media (hover: none) {
+    .ti-item-wrapper:hover {
+        border: 1px solid transparent;
+        background-color: var(--color-surface);
+    }
+    .ti-subject-link:hover {
+        color: var(--color-text);
+    }
+    .ti-subject-link:hover::after {
+        width: 0;
+    }
+}
